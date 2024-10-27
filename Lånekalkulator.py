@@ -81,6 +81,13 @@ if lånebeløp is not None and Månedlig_beløp is not None and effektiv_rente i
     years_with_extra = total_months_with_extra // 12
     months_with_extra = total_months_with_extra % 12
     
+    # After calculating total_months and total_months_with_extra
+    month_difference = total_months - total_months_with_extra
+    
+    # Convert the difference to years and months
+    difference_years = month_difference // 12
+    difference_months = month_difference % 12
+
     interest_saved = total_interest_paid - total_interest_with_extra
     
     # Plotting with Matplotlib
@@ -118,7 +125,8 @@ if lånebeløp is not None and Månedlig_beløp is not None and effektiv_rente i
         st.write(f"Med ekstra betaling på {ekstra_betaling:.0f} kr per måned vil det ta deg **{years_with_extra} år og {months_with_extra} måneder** å betale ned lånet helt.")
         st.write(f"Total rente betalt med ekstra betaling er **{total_interest_with_extra:,.2f} kr**.")
         st.write(f"Med å betale **{ekstra_betaling:,.2f} kr** i måneden sparer du **{interest_saved:,.2f} kr**.")
-    
+        st.write(f"Med ekstra betaling på **{ekstra_betaling:,.2f} kr** per måned betaler du ned lånet **{difference_years} år og {difference_months} måneder** raskere.")
+
     
     fig_bar, ax_bar = plt.subplots(figsize=(8, 4))
     bar_labels = ['Med ekstra betaling', 'Orginal plan']
@@ -143,3 +151,4 @@ if lånebeløp is not None and Månedlig_beløp is not None and effektiv_rente i
 
     with col2:
         st.metric(label="Rentekostnad spart", value=f"{interest_saved:,.2f} kr")
+        st.metric(label="Tid spart", value=f"{difference_years} år og {difference_months} måneder raskere")
