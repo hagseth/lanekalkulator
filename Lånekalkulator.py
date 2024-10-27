@@ -5,9 +5,7 @@ Created on Sun Oct 27 09:39:31 2024
 @author: alexa
 """
 import streamlit as st
-import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.ticker as ticker
 import mplcyberpunk
 
 st.set_page_config(layout="wide")
